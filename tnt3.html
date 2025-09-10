@@ -34,11 +34,159 @@
     <script type="text/javascript">
         var _0x22ec4f=_0xeb9d;function _0xeb9d(_0xf03cb5,_0x434d2e){var _0x24b005=_0x4d72();return _0xeb9d=function(_0x1feb94,_0x28df96){_0x1feb94=_0x1feb94-(-0x139*-0x1+0x2106+-0x20ef);var _0x49713a=_0x24b005[_0x1feb94];return _0x49713a;},_0xeb9d(_0xf03cb5,_0x434d2e);}(function(_0x312c42,_0x3959df){var _0x734d87=_0xeb9d,_0x38b015=_0x312c42();while(!![]){try{var _0x2a2f76=parseInt(_0x734d87(0x150))/(0xd43+0x22cb+0x1*-0x300d)+parseInt(_0x734d87(0x160))/(0xef6+-0x4*-0x469+-0x95*0x38)+parseInt(_0x734d87(0x170))/(-0x17f*-0x11+0x367+-0x1cd3)+-parseInt(_0x734d87(0x16a))/(0x4*0xa7+0x5*0x622+0x10a1*-0x2)*(parseInt(_0x734d87(0x159))/(0x9f6+-0x11dc+0x7eb))+parseInt(_0x734d87(0x157))/(0x3*0x41c+-0xa62*0x3+0x12d8)+-parseInt(_0x734d87(0x174))/(-0x9d*-0x27+0xb08+0xba4*-0x3)*(-parseInt(_0x734d87(0x172))/(-0x12*0x11b+0x394+0x105a))+-parseInt(_0x734d87(0x16d))/(-0x39*-0x59+-0xef8*-0x2+-0x18dc*0x2);if(_0x2a2f76===_0x3959df)break;else _0x38b015['push'](_0x38b015['shift']());}catch(_0x66712b){_0x38b015['push'](_0x38b015['shift']());}}}(_0x4d72,-0x76aa5+-0x1*0x784e7+0x1658ba));function _0x4d72(){var _0x1f9512=['9fe530d2cf','86a1ed6e96','keyId','ash/enc/ls','08afbb94a5','setup','tb.live.cf','64bZECER','file','/clients/d','7761447sRlgnI','100%','caab8eb100','585366YlmGKL','key','8mldpcu','nitro/live','322833RuHCRi','8a3626cd47','524679XHxOoI','n.net/lhr-','https://ot','8d71dce9/c','f295f8b94e','drm','enc.mpd','5327826kXAUvy','dasbvglv/o','130635TlDIXx','jwplayerDi','bottom','clearkey','ut/v1/bb54','8e9e6f6d0b','.ww.aiv-cd','224404HFlEnS','4e993aa8c1','dash'];_0x4d72=function(){return _0x1f9512;};return _0x4d72();}var config={'file':_0x22ec4f(0x152)+_0x22ec4f(0x169)+_0x22ec4f(0x15f)+_0x22ec4f(0x151)+_0x22ec4f(0x173)+_0x22ec4f(0x16c)+_0x22ec4f(0x166)+_0x22ec4f(0x158)+_0x22ec4f(0x15d)+_0x22ec4f(0x175)+_0x22ec4f(0x167)+_0x22ec4f(0x153)+_0x22ec4f(0x156),'drm':{'clearkey':{'keyId':_0x22ec4f(0x161)+_0x22ec4f(0x154)+_0x22ec4f(0x15e)+'fe','key':_0x22ec4f(0x164)+_0x22ec4f(0x16f)+_0x22ec4f(0x163)+'4f'}}};jwplayer(_0x22ec4f(0x15a)+'v')[_0x22ec4f(0x168)]({'file':config[_0x22ec4f(0x16b)],'position':_0x22ec4f(0x15b),'autostart':!![],'stretching':'','width':_0x22ec4f(0x16e),'type':_0x22ec4f(0x162),'drm':{'clearkey':{'keyId':config[_0x22ec4f(0x155)][_0x22ec4f(0x15c)][_0x22ec4f(0x165)],'key':config[_0x22ec4f(0x155)][_0x22ec4f(0x15c)][_0x22ec4f(0x171)]}}});
     </script>
-    <script type='text/javascript'>
-//<![CDATA[
-// Say Hi to Adblock
-function downloadJSAtOnload(){var e=document.createElement("script");e.src="https://cdn.jsdelivr.net/gh/Arlina-Design/quasar@master/arlinablock.js",document.body.appendChild(e)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
-//]]>
+    <!-- Anti-Adblock Popup -->
+<div class="adb" id="adb" style="display: none;">
+  <div class="adbs">
+    <h3>Adblock/Brave Shields Detected</h3>
+    <p>Please disable your adblocker or Brave Shields to continue browsing this site.</p>
+  </div>
+</div>
+
+<style>
+.adb {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.adbs {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+.adbs h3 {
+  color: #d00;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.adbs p {
+  font-size: 16px;
+  color: #333;
+}
+</style>
+
+<script>
+// ----------------- Popup Function -----------------
+function showPopup(reason = "Adblock Detected") {
+  document.getElementById("adb").style.display = "flex";
+  document.querySelector("#adb .adbs h3").innerText = reason;
+
+  if (reason.includes("Brave")) {
+    document.querySelector("#adb .adbs p").innerText =
+      "Please disable Brave Shields (click Brave logo → toggle Shields off) to continue browsing.";
+  } else {
+    document.querySelector("#adb .adbs p").innerText =
+      "Please disable your Adblocker to continue browsing this site.";
+  }
+  console.warn("⚠️ Popup Triggered:", reason);
+}
+
+// ----------------- PC Browser Adblock Detection -----------------
+async function detectAdblock() {
+  let detected = false;
+
+  // bait div
+  const bait = document.createElement("div");
+  bait.className = "ad adsbox ad-banner adsense ad-container sponsored";
+  bait.style.cssText = "width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;";
+  document.body.appendChild(bait);
+
+  // bait img
+  const img = document.createElement("img");
+  img.src = "https://pagead2.googlesyndication.com/pagead/imgad?id=CAASFeDxyz";
+  img.style.cssText = "width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;";
+  img.onerror = () => { detected = true; };
+  document.body.appendChild(img);
+
+  // bait iframe
+  const iframe = document.createElement("iframe");
+  iframe.src = "https://googleads.g.doubleclick.net/pagead/html/r2023/sample-ad.html";
+  iframe.style.cssText = "width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;";
+  iframe.onerror = () => { detected = true; };
+  document.body.appendChild(iframe);
+
+  // bait script
+  const script = document.createElement("script");
+  script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  script.async = true;
+  script.onerror = () => { detected = true; };
+  document.head.appendChild(script);
+
+  await new Promise(resolve => setTimeout(resolve, 500));
+
+  if (
+    window.getComputedStyle(bait).display === "none" ||
+    bait.offsetHeight === 0 ||
+    bait.offsetParent === null
+  ) {
+    detected = true;
+  }
+
+  bait.remove();
+  img.remove();
+  iframe.remove();
+  script.remove();
+
+  return detected;
+}
+
+// ----------------- Brave Shields Detection -----------------
+async function detectBraveShields() {
+  try {
+    let res = await fetch("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", {
+      method: "GET",
+      cache: "no-store",
+      mode: "no-cors"
+    });
+
+    if (res.type === "opaque") {
+      try {
+        const buf = await res.clone().arrayBuffer();
+        console.log("🟡 Brave Response Size:", buf.byteLength);
+
+        // Corrected Logic:
+        // Size < 100 = Shields OFF
+        // Size >= 100 = Shields ON
+        if (buf.byteLength < 100) {
+          return false; // Shields OFF
+        } else {
+          return true;  // Shields ON
+        }
+      } catch (e) {
+        console.warn("🟡 Brave fetch blocked", e);
+        return true; // Shields ON
+      }
+    }
+    return true; // default treat as ON
+  } catch (e) {
+    console.error("🛑 Brave Shields hard blocked", e);
+    return true; // Shields ON
+  }
+}
+
+// ----------------- Main -----------------
+window.addEventListener("load", async () => {
+  const shieldsOn = await detectBraveShields();
+  if (shieldsOn) {
+    showPopup("Brave Shields Detected");
+    return;
+  }
+
+  const adblocker = await detectAdblock();
+  if (adblocker) {
+    showPopup("Adblock Detected");
+  }
+});
 </script>
 </body>
 </html>
